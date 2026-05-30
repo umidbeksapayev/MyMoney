@@ -622,7 +622,8 @@ export default function Family() {
                   <div className="p-6">
                     {/* Members Tab Content */}
                     {activeTab === 'members' && (
-                      <div>
+                      <>
+                        <div>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
                           {t('family.members')} ({familyDetails.members.length})
                         </h3>
@@ -823,7 +824,7 @@ export default function Family() {
                     )}
                   </div>
                 )}
-                      </div>
+                      </>
                     )}
 
                     {/* Budgets Tab Content */}
