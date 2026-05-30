@@ -1,4 +1,7 @@
 import express from 'express';
+import { execSync } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import pool from '../config/database.js';
 
 const router = express.Router();
@@ -122,6 +125,39 @@ router.get('/check-setup', async (req, res) => {
   } catch (error) {
     console.error('Check setup error:', error);
     res.status(500).json({ error: 'Failed to check setup status' });
+  }
+});
+
+// Trigger migrations via HTTP endpoint
+router.post('/run-migrations', async (req, res) => {
+  try {
+    const { secret } = req.body;
+    const SETUP_SECRET = process.env.SETUP_SECRET || 'aurora-setup-2024';
+    
+    if (secret && secret !== SETUP_SECRET) {
+      return res.status(403).json({ error: 'Invalid setup secret' });
+    }
+
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    const scriptPath = path.join(__dirname, '..', 'scripts', 'run-all-migrations.js');
+    
+    console.log('Running database migrations via web endpoint...');
+    const output = execSync(`node "${scriptPath}"`, {
+      env: { ...process.env, NODE_ENV: 'production' }
+    });
+    
+    res.json({
+      success: true,
+      message: 'Migrations executed successfully!',
+      output: output.toString()
+    });
+  } catch (error) {
+    console.error('Migration endpoint error:', error);
+    res.status(500).json({ 
+      error: 'Migrations execution failed', 
+      details: error.message, 
+      output: error.stdout?.toString() || error.stderr?.toString() 
+    });
   }
 });
 
