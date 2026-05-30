@@ -49,7 +49,8 @@ router.post('/forgot-password',
       );
 
       // Generate reset URL
-      const resetUrl = `${process.env.FRONTEND_URL}/reset-password?token=${resetToken}`;
+      const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:5173').split(',')[0].trim();
+      const resetUrl = `${frontendUrl}/reset-password?token=${resetToken}`;
 
       console.log('==============================================');
       console.log('PASSWORD RESET REQUESTED');

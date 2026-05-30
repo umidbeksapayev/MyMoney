@@ -18,17 +18,21 @@ if (isGoogleOAuthEnabled) {
 
   // Google OAuth - Callback
   router.get('/google/callback',
-    passport.authenticate('google', { 
-      session: false,
-      failureRedirect: `${process.env.FRONTEND_URL}/login?error=google_auth_failed`
-    }),
+    (req, res, next) => {
+      const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:5173').split(',')[0].trim();
+      passport.authenticate('google', { 
+        session: false,
+        failureRedirect: `${frontendUrl}/login?error=google_auth_failed`
+      })(req, res, next);
+    },
     (req, res) => {
+      const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:5173').split(',')[0].trim();
       try {
         // Create JWT token with userId and role
         const token = jwt.sign(
           { userId: req.user.id, id: req.user.id, email: req.user.email, role: req.user.role || 'user' },
           process.env.JWT_SECRET,
-          { expiresIn: process.env.JWT_EXPIRES_IN }
+          { expiresIn: process.env.JWT_EXPIRES_IN || '30d' }
         );
 
         // Encode user data for URL
@@ -41,10 +45,10 @@ if (isGoogleOAuthEnabled) {
         }));
 
         // Redirect to frontend with token and user data
-        res.redirect(`${process.env.FRONTEND_URL}/auth/callback?token=${token}&user=${userData}`);
+        res.redirect(`${frontendUrl}/auth/callback?token=${token}&user=${userData}`);
       } catch (error) {
         console.error('Error creating token:', error);
-        res.redirect(`${process.env.FRONTEND_URL}/login?error=token_creation_failed`);
+        res.redirect(`${frontendUrl}/login?error=token_creation_failed`);
       }
     }
   );
@@ -58,7 +62,8 @@ if (isGoogleOAuthEnabled) {
   });
 
   router.get('/google/callback', (req, res) => {
-    res.redirect(`${process.env.FRONTEND_URL}/login?error=oauth_not_configured`);
+    const frontendUrl = (process.env.FRONTEND_URL || 'http://localhost:5173').split(',')[0].trim();
+    res.redirect(`${frontendUrl}/login?error=oauth_not_configured`);
   });
 }
 
