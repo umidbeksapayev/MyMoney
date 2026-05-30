@@ -6,6 +6,9 @@ ADD COLUMN IF NOT EXISTS role VARCHAR(20) DEFAULT 'contributor';
 
 -- Add check constraint to ensure valid roles
 ALTER TABLE family_invite_codes
+DROP CONSTRAINT IF EXISTS family_invite_codes_role_check;
+
+ALTER TABLE family_invite_codes
 ADD CONSTRAINT family_invite_codes_role_check 
 CHECK (role IN ('manager', 'contributor', 'observer'));
 
