@@ -395,7 +395,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 
 ## 🔗 Links
 
-- **Live Demo (Vercel Frontend)**: [https://frontend-seven-sigma-s7syfd9iv7.vercel.app](https://frontend-seven-sigma-s7syfd9iv7.vercel.app)
+- **Live Demo (Vercel Frontend)**: [https://meningpulim.vercel.app](https://meningpulim.vercel.app)
 - **One-Click Backend & DB Deploy**: [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/umidbeksapayev/MyMoney)
 - **Report Issues**: [GitHub Issues](../../issues)
 

@@ -20,7 +20,7 @@ services:
       - key: JWT_EXPIRES_IN
         value: 30d
       - key: FRONTEND_URL
-        value: https://frontend-seven-sigma-s7syfd9iv7.vercel.app,http://localhost:5173
+        value: https://meningpulim.vercel.app,http://localhost:5173
       - key: EXCHANGE_RATE_API_KEY
         value: 0fe9acb002e50ab852947697
 
