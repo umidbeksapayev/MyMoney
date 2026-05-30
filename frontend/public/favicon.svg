@@ -1,0 +1,30 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle with Gradient -->
+  <circle cx="128" cy="128" r="120" fill="url(#gradient)"/>
+  
+  <!-- Dollar Sign (Finance Symbol) -->
+  <path d="M128 60 L128 196 M100 80 L156 80 C162 80 168 86 168 92 C168 98 162 104 156 104 L100 104 M100 152 L156 152 C162 152 168 146 168 140 C168 134 162 128 156 128 L100 128" 
+        stroke="white" 
+        stroke-width="12" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        fill="none"/>
+  
+  <!-- Chart Lines (Analytics) -->
+  <path d="M40 170 L70 150 L90 160 L120 130 L140 145 L170 120 L200 140" 
+        stroke="white" 
+        stroke-width="6" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        fill="none"
+        opacity="0.6"/>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>
+
