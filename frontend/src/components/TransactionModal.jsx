@@ -51,16 +51,8 @@ const TransactionModal = ({ transaction, categories: initialCategories, onClose 
   
   const CURRENCIES = [
     { code: 'USD', name: 'US Dollar', symbol: '$' },
-    { code: 'VND', name: 'Vietnamese Dong', symbol: '₫' },
-    { code: 'EUR', name: 'Euro', symbol: '€' },
-    { code: 'JPY', name: 'Japanese Yen', symbol: '¥' },
-    { code: 'GBP', name: 'British Pound', symbol: '£' },
-    { code: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
-    { code: 'KRW', name: 'Korean Won', symbol: '₩' },
-    { code: 'THB', name: 'Thai Baht', symbol: '฿' },
-    { code: 'SGD', name: 'Singapore Dollar', symbol: 'S$' },
-    { code: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
-    { code: 'CAD', name: 'Canadian Dollar', symbol: 'C$' },
+    { code: 'RUB', name: 'Russian Ruble', symbol: '₽' },
+    { code: 'UZS', name: 'Uzbek Som', symbol: "so'm" },
   ];
 
   // Real-time validation

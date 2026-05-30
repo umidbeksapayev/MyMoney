@@ -1,7 +1,7 @@
 {
-  "name": "aurora-ledger-backend",
+  "name": "mening-pulim-backend",
   "version": "1.0.0",
-  "description": "Backend for AuroraLedger - Personal Finance Management",
+  "description": "Backend for Mening Pulim - Personal Finance Management",
   "main": "server.js",
   "type": "module",
   "scripts": {
